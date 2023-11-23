@@ -1,0 +1,93 @@
+.login-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 300px;
+
+    .login {
+        width: 600px;
+        height: 225px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        border: 1px solid rgba(216, 215, 215, 0.3);
+        padding: 20px;
+
+            &-button {
+                background-color: #f82222;
+                border-radius: 20px;
+                color: white;
+                border: none;
+                padding: 4px 15px;
+                font-size: 17px;
+                margin: 5px 0;
+            }
+            h4 {
+                font-size: 20px;
+                margin-bottom: 15px;
+            }
+
+            a {
+                color: #f82222;
+            }
+
+            p {
+                color:#58595c;
+            }
+
+            .form-login {
+                display: flex;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+
+                    &__input {
+                        height: 30px;
+                        width: 250px;
+                        margin-bottom: 5px;
+                        border-radius: 3px;
+                        border: 1px solid rgba(0, 0, 0, 0.3);
+                        padding: 5px;
+                    }
+
+                    &__input:focus {
+                        border: 1px solid rgba(0, 0, 0, 0.5);
+                    }
+
+                    &__error {
+                        color: darkgrey;
+                        margin-bottom: 3px;
+                    }
+            }
+    }
+    
+}
+
+.login-info {
+    position: absolute;
+    bottom: 15px; 
+
+    p {
+        color: antiquewhite;
+        font-size: 16px;
+
+    }
+
+    &__button {
+        background-color: #f82222;
+        cursor: pointer;
+        margin-top: 10px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        border: none;
+        padding: 5px 13px;
+        border-radius: 5px;
+        color: #d1d1d1;
+    }
+}

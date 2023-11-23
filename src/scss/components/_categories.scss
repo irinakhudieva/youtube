@@ -1,0 +1,27 @@
+.categories {
+    display: flex;
+    justify-content: start;
+    margin: 30px 75px;
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+
+    .item-active {
+        background-color: #f82222;
+        border-radius: 20px;
+        color: white;
+        padding: 7px 12px;
+        margin: 10px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .item {
+        background: transparent;
+        margin: 10px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}

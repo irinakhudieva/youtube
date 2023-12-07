@@ -14,9 +14,9 @@ type VideoItemProps = {
     isHorizontal: boolean
 }
 
-const VideoItem: React.FC<VideoItemProps> = ({video, isHorizontal}) => {
+const VideoItem: React.FC<VideoItemProps> = ({video, isHorizontal}) => { 
     const [views, setViews] = useState<number>(0);
-    
+
     const {
         snippet: {channelTitle, channelId, title, thumbnails, publishedAt}, 
         id: {videoId}
@@ -24,6 +24,7 @@ const VideoItem: React.FC<VideoItemProps> = ({video, isHorizontal}) => {
         snippet: {channelTitle: '', channelId: '', title: '', thumbnails: '', publishedAt: ''}, 
         id: {videoId: ''}
     };
+
 
     const dispatch = useAppDispatch();
     
@@ -33,7 +34,6 @@ const VideoItem: React.FC<VideoItemProps> = ({video, isHorizontal}) => {
         setViews(data?.items[0]?.statistics?.viewCount);
     }, [videoId, data, views]);
 
-   console.log(views)
 
     return (
         <div className={isHorizontal ? 'video-list-row__item' : 'video-list__item'}>
@@ -44,7 +44,7 @@ const VideoItem: React.FC<VideoItemProps> = ({video, isHorizontal}) => {
                 </NavLink>
                 <div>
                     <NavLink to={`/channel/${channelId}`}>
-                        <p>{channelTitle}</p>
+                        <p className='channel-name'>{channelTitle}</p>
                     </NavLink>
                     <p>{formatCompactNum(views)} просмотров ‧ {moment(publishedAt).fromNow()}</p>
                 </div>

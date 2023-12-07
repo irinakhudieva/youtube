@@ -11,7 +11,6 @@ const SearchFeed: React.FC = () => {
 
     const query = searchParams.get('q');
    
-
     const {data, isLoading } = useGetVideoListQuery(query);
 
     console.log(data)
@@ -22,8 +21,13 @@ const SearchFeed: React.FC = () => {
             <h2>Результаты поиска: '{query}'</h2>
             <div className='video-list-row'>
                 {!isLoading ? (
-                    data?.items.map((video: IVideoItem) => 
-                        <VideoItem key={video.id.videoId} video={video} isHorizontal={true} />)
+                    data?.items.map((video: IVideoItem) => {
+                        if('videoId' in video.id) {
+                            return (
+                               <VideoItem key={video.id.videoId} video={video} isHorizontal={true} />  
+                            )
+                        }
+                    })             
                 ) : (
                     [...new Array(15)].map((_, index) => 
                         <SkeletonSearch key={index} />)

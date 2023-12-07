@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useGetVideoByIdQuery, useRelatedByVideoIdQuery } from '../redux/api/api';
+import { useGetVideoByIdQuery } from '../redux/api/api';
 import { NavLink, useParams } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import ReactPlayer from 'react-player';
 import CommentsVideo from '../components/comments/CommentsVideo';
-import VideoItem from '../components/video/VideoItem';
 import { formatCompactNum } from '../utils/common';
 import moment from 'moment';
 import Favorite from '../components/video/Favorite';
@@ -17,10 +16,6 @@ const VideoById: React.FC = () => {
     const [video, setVideo] = useState<IVideoItem | null>(null);
 
     const {data, isLoading} = useGetVideoByIdQuery(videoId);
-
-    const {data: relatedVideo} = useRelatedByVideoIdQuery(videoId);
-
-  
     
     useEffect(() => {
         setVideo(data?.items[0]);
@@ -63,13 +58,6 @@ const VideoById: React.FC = () => {
                     </div>
                 </div>
                  <CommentsVideo videoId={videoId} commentCount={commentCount} />     
-            </div>
-
-            <div className='related-video'>
-                <h3>Рекомендуемые видео</h3>
-                {relatedVideo?.items.map((video: IVideoItem) => 
-                    <VideoItem key={video.id.videoId} video={video} isHorizontal={false} />
-                )}
             </div>
         </div>
     )

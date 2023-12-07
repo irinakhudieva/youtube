@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import request from './request/requestSlise';
+import request from './request/requestSlice';
 import favorite from './favorite/favoriteSlice';
 import auth from './auth/authSlice';
 import history from './history/historySlice';
@@ -28,7 +28,10 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware)
+    getDefaultMiddleware({
+        immutableCheck: false,
+        serializableCheck: false,
+      }).concat(api.middleware)
 });
 
 export const persistor = persistStore(store);

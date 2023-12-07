@@ -17,7 +17,8 @@ export interface IVideoItem extends IVideoDetail {
         }
     },
     id: {
-        videoId: string
+        videoId: string,
+        playlistId: string
     } 
 }
 
@@ -45,25 +46,22 @@ export interface IComment {
 }
 
 export interface IChannel {
-    brandingSettings: {
-        channel: 
-            {
-                description: string, 
-                title: string
-            },
-        image: 
-            {
-                bannerExternalUrl: string
-            }
-    },
     snippet: {
-        customUrl: string
+        customUrl: string,
+        description: string,
+        title: string,
+        thumbnails: {
+            medium: {
+                url: string
+            }
+        }
     },
     statistics: {
-        subscriberCount: number, 
-        videoCount: number
-    }   
+        subscriberCount: string, 
+        videoCount: string
+    } 
 }
+
  
 export interface HoverState {
     isMouseIn: boolean;

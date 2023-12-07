@@ -12,8 +12,6 @@ const HomePage: React.FC = () => {
    
     const {data, isLoading, error} =  useGetVideoListQuery(selectedCategory);
 
-    console.log(data)
-
     if(error) return <div className='error'>Произошла ошибка, попробуйте позже.</div>;
 
     return (
@@ -21,8 +19,13 @@ const HomePage: React.FC = () => {
             <Categories selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
             <div className='video-list'>
                     {!isLoading ? (
-                        data?.items.map((video: IVideoItem) => 
-                            <VideoItem key={video.id.videoId} video={video} isHorizontal={false} /> 
+                        data?.items.map((video: IVideoItem) => {
+                            if('videoId' in video.id) {
+                                return (
+                                   <VideoItem key={video.id.videoId} video={video} isHorizontal={false} />  
+                                )
+                            }
+                        }    
                     )) : (
                         [...new Array(15)].map((_, index) => 
                         <Skeleton key={index} />)

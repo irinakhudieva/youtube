@@ -23,7 +23,7 @@ const CommentItem: React.FC<CommentProps> = ({comment}) => {
                 </div>
                 <p className='text-comment'>{textDisplay}</p>
                 <div>
-                    <AiOutlineLike /> {likeCount}
+                    <span><AiOutlineLike /> {likeCount}</span>
                 </div>
            </div>
         </div>

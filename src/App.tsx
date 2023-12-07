@@ -5,7 +5,6 @@ import AppRoutes from './routes/AppRoutes';
 import Sidebar from './components/Sidebar';
 import useTheme from './hooks/useTheme';
 
-
 const App: React.FC = () => {
     const value = useTheme();
 

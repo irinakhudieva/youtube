@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import VideoItem from '../components/video/VideoItem';
@@ -6,12 +6,14 @@ import { useAppSelector } from '../hooks/reduxHooks';
 
 const FavoritesVideo: React.FC = () => {
     const {isAuth} = useAuth();
-    console.log(isAuth)
+
     const navigate = useNavigate();
 
     const { favorite } = useAppSelector(state => state.favorite);
     
-    if (!isAuth) navigate('/login');
+    useEffect(() => {
+        if (!isAuth) navigate('/login');
+    }, [isAuth, navigate]);
 
     return (
         <div className='video-wrapper'>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { GoSearch } from 'react-icons/go';
 import { VscClose } from 'react-icons/vsc';
 import { useNavigate } from 'react-router-dom';
-import { addRequest, deleteRequest } from '../redux/request/requestSlise';
+import { addRequest, deleteRequest } from '../redux/request/requestSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/reduxHooks';
 
 

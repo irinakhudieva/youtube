@@ -14,17 +14,18 @@ type CommentsProps = {
 const CommentsVideo: React.FC<CommentsProps> = ({videoId, commentCount}) => {
     const {data} = useGetCommentsQuery(videoId);
 
+    console.log('comments', data)
+
     return (
       <div className='comments'>
-        {!(data?.error?.code === 403) ? (
+        {data ? (
             <div>
                 <h3>{formatCompactNum(commentCount)} комментариев</h3>
                 {data?.items?.map((comment: IComment) =>  { 
-                <CommentItem key={comment.id} comment={comment} />
-                    }
-                   
-                    
-                )}
+                    return (
+                        <CommentItem key={comment.id} comment={comment} />
+                    )
+                })}
             </div>
         ) : (
             <h4><FaUnlockAlt />  Владелец канала отключил комментарии.</h4>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -14,8 +14,10 @@ const History: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
-    if (!isAuth) navigate('/login');
-
+    useEffect(() => {
+        if (!isAuth) navigate('/login');
+    }, [isAuth, navigate]);
+   
     return (
         <div className='video-wrapper'>
             <h2>История просмотров</h2> 

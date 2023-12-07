@@ -9,6 +9,7 @@ import ChannelById from '../pages/ChannelById';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
 
+
 const AppRoutes: React.FC = () => {
     return (
         <Routes>

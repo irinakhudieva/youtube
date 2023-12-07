@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     const value = useTheme();
 
     return (
+        
         <header className='header'>
             <NavLink to='/'>
                 <img className='header__logo' src={value?.dark ? logo : logoWhite} alt='logo' />

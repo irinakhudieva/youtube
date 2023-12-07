@@ -15,42 +15,50 @@ const ChannelById: React.FC = () => {
     const {data: videos} = useChannelVideoQuery(channelId);
 
     useEffect(() => {
-        setChannel(data);
-    }, [channelId, data, videos]);
+        setChannel(data?.items[0]);
+    }, [channelId, data]);
 
     console.log(data)
 
+    console.log('channel', channel)
+
     
     const {
-        brandingSettings: {
-            channel: {description, title},
-            image: {bannerExternalUrl}
-        },
         snippet: {
-            customUrl
+            customUrl,
+            description,
+            title,
+            thumbnails: {
+                medium: {
+                    url
+                }
+            } 
         },
         statistics: {subscriberCount, videoCount}   
     } = channel  || {
-        brandingSettings: {
-            channel: {description: '', title: ''},
-            image: {bannerExternalUrl: ''}
-        },
         snippet: {
-            customUrl: ''
+            customUrl: '',
+            description: '',
+            title: '',
+            thumbnails: {
+                medium: {
+                    url: ''
+                }
+            }
         },
         statistics: {subscriberCount: '', videoCount: ''} 
     };
 
     if (isLoading) return <Spinner />;
 
-    if(error) return <p>Ошибка, попробуйте позже.</p>
+    if(error) return <p className='error'>Ошибка, попробуйте позже.</p>
 
     return (
         <div className='channel'>
             <div className='channel__item'>
                 <img 
                     className='avatar' 
-                    style={{backgroundImage: `url(${bannerExternalUrl})`,
+                    style={{backgroundImage: `url(${url})`,
                             backgroundPosition: 'center',
                             backgroundSize: 'cover',
                             backgroundRepeat: 'no-repeat'}} 
@@ -58,7 +66,7 @@ const ChannelById: React.FC = () => {
                 <div className='description-block'> 
                     <h2>{title}</h2>
                     <div>
-                        {customUrl} ‧ {subscriberCount} подписчиков ‧ {videoCount} видео
+                        <h5>{customUrl} ‧ {subscriberCount} подписчиков ‧ {videoCount} видео</h5>
                     </div>
                     <p className='description-block__text'>{description} </p> 
                 </div>

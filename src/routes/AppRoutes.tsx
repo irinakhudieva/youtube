@@ -13,7 +13,7 @@ import Register from '../pages/Register';
 const AppRoutes: React.FC = () => {
     return (
         <Routes>
-            <Route path='/youtube' element={<HomePage />} />
+            <Route path='/*' element={<HomePage />} />
             <Route path='/favorites' element={<FavoritesVideo />} />
             <Route path='/search' element={<SearchFeed />} />
             <Route path='/history' element={<History />} />

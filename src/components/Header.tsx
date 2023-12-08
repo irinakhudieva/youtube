@@ -14,7 +14,7 @@ const Header: React.FC = () => {
     return (
         
         <header className='header'>
-            <NavLink to='/'>
+            <NavLink to='/youtube'>
                 <img className='header__logo' src={value?.dark ? logo : logoWhite} alt='logo' />
             </NavLink>
             <Search /> 
